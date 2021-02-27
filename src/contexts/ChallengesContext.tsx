@@ -40,7 +40,7 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
   const experienceFactor = 4
-  const experienceToNextLevel = Math.pow((level+1) * experienceFactor, 2)
+  const experienceToNextLevel = Math.pow((Number(level)+1) * experienceFactor, 2)
 
   // Execute only the first time the application rans
   useEffect(() => {
@@ -54,7 +54,7 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
   },[level, currentExperience, challengesCompleted] )
 
   function levelUp(){
-    setLevel(level + 1)
+    setLevel(Number(level) + 1)
     setIsLevelUpModalOpen(true)
   }
 
@@ -94,7 +94,7 @@ export function ChallengesProvider({children, ...rest}: ChallengesProviderProps)
     }
     setCurrentExperience(finalExperience)
     setActiveChallenge(null)
-    setChallengesCompleted(challengesCompleted+1)
+    setChallengesCompleted(Number(challengesCompleted)+1)
   }
 
   return(
